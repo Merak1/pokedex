@@ -4,7 +4,7 @@ import Pokemon from "./pokemon";
 import { useDispatch, useSelector } from "react-redux";
 import { getSelectedPokemon } from "./pokeSlice";
 import { useNavigate } from "react-router-dom";
-
+import capitalize from "./helpers/capitalize";
 const PokemonList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const PokemonList = () => {
               className="pokemon-card"
               onClick={(e) => pokeClick(e, pokemon)}
             >
-              <Pokemon name={pokemon.name} url={pokemon.url} />
+              <Pokemon name={capitalize(pokemon.name)} url={pokemon.url} />
             </div>
           ))
         ) : (

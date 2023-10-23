@@ -1,6 +1,11 @@
+:root {
+  --blue: #0a2135;
+  --red: #c90000;
+  --white: #ffffff;
+}
+
 @font-face {
   font-family: "Pokemon Solid";
-  /*Can be any text*/
   src: local("Pokemon Solid"),
     url("./assets/Pokemon_Solid.ttf") format("truetype");
 }
@@ -16,14 +21,11 @@
 }
 
 h1 {
-  /* font-family: 'Pokemon Solid'; */
   font-stretch: expanded;
   letter-spacing: 5px;
 }
 
 .container {
-  /* width: 100%;
-  height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +35,6 @@ h1 {
 
 .pokedex {
   width: 80%;
-  /* height: 80%; */
   min-height: 40%;
   border-radius: 10px;
 }
@@ -44,42 +45,35 @@ h1 {
 }
 
 .pokemon-display {
-  background-color: rgb(10, 33, 53);
-  /* background-image: url(assets/pokemonPatternWallpaper.jpg); */
+  background-color: var(--red);
   width: 60%;
   height: 100%;
   display: flex;
   align-items: center;
   height: inherit;
   padding: 20px 0px;
-  border-radius: 0px 10px 10px 0px;
 }
 
 .pokemon-list {
   width: 100%;
-  /* display: flex; */
   flex-wrap: wrap;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 10px;
+  gap: 9px;
 }
-
-
 
 .pokemon-card {
   height: 100%;
   width: 90%;
   background-color: antiquewhite;
-  border-radius: 10px;
-  /* margin: 30px; */
   margin: auto;
   display: flex;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .pokemon-card:hover {
-  background-color: rgb(90, 90, 90);
+  background-color: rgb(45, 45, 45);
   cursor: pointer;
   color: wheat;
 }
@@ -88,7 +82,7 @@ h1 {
   width: 100%;
   margin: auto;
   text-align: center;
-  font-size: 2.3cqh;
+  font-size: 2.6cqh;
 }
 
 .preview-background {
@@ -116,7 +110,6 @@ h1 {
   height: 100%;
   display: block;
   background-size: cover;
-  /* height: inherit; */
 }
 
 .pokedex-image {
@@ -145,8 +138,8 @@ button .disabled {
   height: 100%;
   width: 90%;
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.842);
-  color: rgb(246, 24s6, 246);
+  background-color: rgb(1 0 151 / 36%);
+  color: rgb(246, 246, 246);
   padding: 5px;
   border-radius: 10px;
   font-size: 1em;
@@ -154,47 +147,93 @@ button .disabled {
 
 .detail {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
+.detail .name {
+  display: flex;
+}
+
+.detail .name h1 {
+  width: 80%;
+}
+
+.detail .name p {
+  width: 20%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.physical-attributes {
+  display: flex;
+  justify-content: space-around;
 }
 
 .return {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.return-button {
   border-radius: 10%;
-  background-color: aliceblue;
-  padding: 20px;
+  background-color: rgb(213, 241, 156);
+  margin: 10px;
+  padding: 10px;
   font-size: 20px;
   color: rgb(10, 59, 103);
 }
 
-.return:hover {
-  background-color: rgb(10, 59, 103);
+.return-button:hover {
+  background-color: var(--blue);
   color: aliceblue;
 }
 
-.types {
+.types,
+.abilities {
   display: flex;
   flex-wrap: wrap;
 }
 
-.types p {
-  /* color: red; */
+.types p,
+.abilities p {
   width: 100%;
+  padding: 5px 0px;
 }
 
-.type {
-  width: 50%;
-}
-
-.type p {
-  color: black;
+.type,
+.ability {
+  width: 100%;
+  display: flex;
+  border: 1px solid black;
+  background-color: #6b0707;
 }
 
 .controll {
-  /* position: fixed; */
   bottom: 0;
   right: 0;
-  background-color: blue;
+  background-color: var(--blue);
   display: flex;
   justify-content: space-between;
+}
+
+.controll-active {
+  color: var(--white);
+  background-color: #6b0707;
+  padding: 10px 10px;
+}
+
+.controll-active:hover {
+  color: var(--white);
+  background-color: #6b0707;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+.controll-inactive {
+  background-color: #2c0505;
+  color: #2c0505;
 }
 
 .name h1 {

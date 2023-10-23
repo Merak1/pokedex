@@ -3,7 +3,7 @@ import pokedex from "./assets/pokedex.jpg";
 import { useSelector } from "react-redux";
 import pokemonColors from "./helpers/pokemonColors";
 import gradient from "./helpers/gradient";
-
+import getColorsFromPokemonType from "./helpers/getColorsFromTypes";
 const PokePreview = () => {
   const [pokemonGradientValues, setPokemonGradientValues] = useState([]);
   const selectedPokemon = useSelector(
@@ -11,20 +11,11 @@ const PokePreview = () => {
   );
   useEffect(() => {
     if (selectedPokemon) {
-      setPokemonGradientValues(getColorsFromPokemonType(pokemonColors));
+      setPokemonGradientValues(
+        getColorsFromPokemonType(pokemonColors, selectedPokemon)
+      );
     }
   }, [selectedPokemon]);
-  const getColorsFromPokemonType = (listOfColors) => {
-    let gradientValues = [];
-    selectedPokemon.types.forEach((element) => {
-      if (element.type.name in listOfColors) {
-        gradientValues.push(listOfColors[element.type.name]);
-      }
-    });
-    console.log("gradientValues", gradientValues);
-    return gradientValues;
-  };
-
   return (
     <>
       {selectedPokemon !== null ? (
@@ -32,7 +23,6 @@ const PokePreview = () => {
           className="preview-background "
           style={{ background: gradient(pokemonGradientValues) }}
         >
-          {/* <p>id: {selectedPokemon.id}</p> */}
           <img src={selectedPokemon.sprites.front_default} alt="" />
         </div>
       ) : (

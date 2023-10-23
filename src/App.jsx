@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
-import Pokemon from "./pokemon";
 import PokePreview from "./pokePreview";
 import PokemonDisplay from "./pokemonDisplay";
-import { useDispatch, useSelector } from "react-redux";
-import { Outlet, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import {
   addAllPokemons,
@@ -38,22 +36,13 @@ function App() {
 
   const fetchPokemonList = (url, offSet, limit) => {
     const completedUrl = `${url}${offSet}&limit=${limit}`;
-    // console.log("🍊🍊🍊🍊🍊🍊🍊🍊");
-    // console.log("url ", url);
-    // console.log("offSet ", offSet);
-    // console.log("limit ", limit);
-    // console.log("🌲🌲🌲🌲🌲");
-    // console.log("completedUrl ", completedUrl);
-    // console.log("🍊🍊🍊🍊🍊🍊🍊🍊");
     axios
-
       .get(completedUrl)
       .then((res) => {
         dispatch(getCurrent20Pokemons(url));
         dispatch(addAllPokemons(res.data.results));
         dispatch(getNext20Pokemons(res.data.next));
         dispatch(getPrevious20Pokemons(res.data.previous));
-        // console.log("res.data 💜", res.data);
       })
       .catch((error) => console.log(error));
   };
@@ -71,25 +60,26 @@ function App() {
         <div className="pokedex">
           <div className="pokedata">
             <div className="poke-preview">
-              {/* <p>count / {count}</p>
-            <p>offset / {offSet}</p> */}
-              {/* <PokePreview pokemon={selectedPokemon} /> */}
-              {/* <div className="preview-image"> */}
               <PokePreview />
-              {/* </div> */}
             </div>
             <PokemonDisplay />
           </div>
 
           <div className="controll">
             <button
-              disabled={count <= 0 ? true : false}
+              className={` ${
+                count <= 0 ? "controll-inactive" : "controll-active"
+              }`}
+              disabled={count <= 0}
               onClick={getPreviousPokemonList}
             >
               previous
             </button>
             <button
-              disabled={count < 7 ? false : true}
+              className={` ${
+                count < 7 ? "controll-active" : "controll-inactive"
+              }`}
+              disabled={count < 7}
               onClick={getNextPokemonList}
             >
               next

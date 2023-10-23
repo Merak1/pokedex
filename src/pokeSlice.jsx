@@ -18,7 +18,6 @@ export const pokeSlice = createSlice({
     addAllPokemons: (state, action) => {
       state.pokelist = action.payload;
     },
-    //
     getNext20Pokemons: (state, action) => {
       state.next20Pokemons = action.payload;
     },
@@ -26,11 +25,9 @@ export const pokeSlice = createSlice({
       state.previous20Pokemons = action.payload;
     },
     getCurrent20Pokemons: (state, action) => {
-      // console.log("current20PokemonApiURl 🟡", action.payload);
       state.current20Pokemons = action.payload;
     },
     getSelectedPokemon: (state, action) => {
-      // console.log(" getSelectedPokemon🟡", action.payload);
       state.selectedPokemon = action.payload;
     },
   },
