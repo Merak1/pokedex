@@ -4,7 +4,7 @@ import axios from "axios";
 import PokePreview from "./pokePreview";
 import PokemonDisplay from "./pokemonDisplay";
 import { useDispatch } from "react-redux";
-import urlCall from "./pokeSlice";
+import { urlCall } from "./pokeSlice";
 import {
   addAllPokemons,
   getNext20Pokemons,
