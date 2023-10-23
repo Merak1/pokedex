@@ -35,7 +35,7 @@ function App() {
     axios
       .get(completedUrl)
       .then((res) => {
-        dispatch(getCurrent20Pokemons(url));
+        dispatch(getCurrent20Pokemons(completedUrl));
         dispatch(addAllPokemons(res.data.results));
         dispatch(getNext20Pokemons(res.data.next));
         dispatch(getPrevious20Pokemons(res.data.previous));
@@ -75,7 +75,7 @@ function App() {
               className={` ${
                 count < 7 ? "controll-active" : "controll-inactive"
               }`}
-              disabled={count < 7}
+              disabled={count > 7}
               onClick={getNextPokemonList}
             >
               next
