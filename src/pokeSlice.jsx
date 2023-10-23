@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export const urlCall = "https://pokeapi.co/api/v2/pokemon/?offset=";
+
 const initialState = {
   pokelist: [],
   next20Pokemons: [],

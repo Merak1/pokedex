@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import getColorsFromPokemonType from "./helpers/getColorsFromTypes";
-import pokemonColors from "./helpers/pokemonColors";
+import getColorsFromPokemonType from "./stylers/getColorsFromTypes";
+import pokemonColors from "./stylers/pokemonColors";
 
 import axios from "axios";
 // import Detail from "./detail";
@@ -19,20 +19,18 @@ const PokemonDetail = () => {
   const selectedPokemon = useSelector(
     (state) => state.pokeReducer.selectedPokemon
   );
-  const fetchPokemonList = (pokemonId) => {
+  const fetchSinglePokemon = (pokemonId) => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`).then((res) => {
       dispatch(getSelectedPokemon(res.data));
-      // console.log("res.data 💜", res.data);
     });
-    // .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     if (selectedPokemon === null) {
       if (pokemonIdFromUrl <= 151) {
-        setCurrentPokemon(fetchPokemonList(pokemonIdFromUrl));
+        setCurrentPokemon(fetchSinglePokemon(pokemonIdFromUrl));
       } else {
-        setCurrentPokemon(fetchPokemonList(151));
+        setCurrentPokemon(fetchSinglePokemon(151));
       }
     } else {
       setCurrentPokemon(selectedPokemon);

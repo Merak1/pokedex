@@ -4,7 +4,7 @@ import axios from "axios";
 import PokePreview from "./pokePreview";
 import PokemonDisplay from "./pokemonDisplay";
 import { useDispatch } from "react-redux";
-
+import urlCall from "./pokeSlice";
 import {
   addAllPokemons,
   getNext20Pokemons,
@@ -16,21 +16,17 @@ function App() {
   const dispatch = useDispatch();
   const [count, setCount] = useState(0);
   const [offSet, setOffset] = useState(0);
-  const [limit, setLimit] = useState(20);
-
-  const [apiCall, setApiCall] = useState(
-    "https://pokeapi.co/api/v2/pokemon/?offset="
-  );
+  const limit = 20;
 
   useEffect(() => {
-    fetchPokemonList(apiCall, offSet, limit);
+    fetchPokemonList(urlCall, offSet, limit);
   }, []);
 
   useEffect(() => {
     if (offSet === 140) {
-      fetchPokemonList(apiCall, offSet, 11);
+      fetchPokemonList(urlCall, offSet, 11);
     } else {
-      fetchPokemonList(apiCall, offSet, limit);
+      fetchPokemonList(urlCall, offSet, limit);
     }
   }, [offSet, limit]);
 

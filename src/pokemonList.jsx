@@ -1,20 +1,21 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
 import Pokemon from "./pokemon";
 import { useDispatch, useSelector } from "react-redux";
 import { getSelectedPokemon } from "./pokeSlice";
 import { useNavigate } from "react-router-dom";
-import capitalize from "./helpers/capitalize";
+import capitalize from "./stylers/capitalize";
+
 const PokemonList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const pokemonList = useSelector((state) => state.pokeReducer.pokelist);
+
   const selectedPokemon = useSelector(
     (state) => state.pokeReducer.selectedPokemon
   );
 
-  const pokeClick = (e, pokemonInput) => {
+  const clickHandler = (e, pokemonInput) => {
     if (e.detail === 1) {
       console.log("1 click");
       const { name, url } = pokemonInput;
@@ -37,13 +38,13 @@ const PokemonList = () => {
   return (
     <>
       <div className="pokemon-list">
-        {pokemonList !== undefined ? (
+        {pokemonList && pokemonList.length > 0 ? (
           pokemonList.map((pokemon) => (
             <div
               key={pokemon.name}
               id={pokemon.name}
               className="pokemon-card"
-              onClick={(e) => pokeClick(e, pokemon)}
+              onClick={(e) => clickHandler(e, pokemon)}
             >
               <Pokemon name={capitalize(pokemon.name)} url={pokemon.url} />
             </div>

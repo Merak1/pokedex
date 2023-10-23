@@ -1,5 +1,5 @@
 
-const createGradient =(values) => { //array of gradient colors
+const createGradient =(values) => {
     let gradientString = ' '
 
     if(values.length <= 1 ){

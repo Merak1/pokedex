@@ -1,5 +1,5 @@
 
-const getColorsFromPokemonType =(listOfColors,selectedPokemon ) => { //array of gradient colors
+const getColorsFromPokemonType =(listOfColors,selectedPokemon ) => { 
     let gradientValues = [];
     console.log('From helper')
     selectedPokemon.types.forEach((element) => {

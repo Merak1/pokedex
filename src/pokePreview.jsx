@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import pokedex from "./assets/pokedex.jpg";
 import { useSelector } from "react-redux";
-import pokemonColors from "./helpers/pokemonColors";
-import gradient from "./helpers/gradient";
-import getColorsFromPokemonType from "./helpers/getColorsFromTypes";
+import pokemonColors from "./stylers/pokemonColors";
+import gradient from "./stylers/gradient";
+import getColorsFromPokemonType from "./stylers/getColorsFromTypes";
 const PokePreview = () => {
   const [pokemonGradientValues, setPokemonGradientValues] = useState([]);
   const selectedPokemon = useSelector(
