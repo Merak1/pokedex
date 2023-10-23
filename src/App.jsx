@@ -11,8 +11,6 @@ import {
   addAllPokemons,
   getNext20Pokemons,
   getPrevious20Pokemons,
-  getSelectedPokemon,
-  getAllPokemons,
   getCurrent20Pokemons,
 } from "./pokeSlice";
 
@@ -39,7 +37,7 @@ function App() {
   }, [offSet, limit]);
 
   const selectedPokemon = useSelector(
-    (state) => state.pokeReducer.selectedPokemon[0]
+    (state) => state.pokeReducer.selectedPokemon
   );
 
   const fetchPokemonList = (url, offSet, limit) => {

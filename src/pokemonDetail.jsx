@@ -5,12 +5,13 @@ import { useState, useEffect } from "react";
 const PokemonDetail = () => {
   const [pokemonTypes, setPokemonTypes] = useState([]);
   const selectedPokemon = useSelector(
-    (state) => state.pokeReducer.selectedPokemon[0]
+    (state) => state.pokeReducer.selectedPokemon
   );
   useEffect(() => {
     console.log("selectedPokemon 💚", selectedPokemon);
     getPokemonTypes();
   }, [selectedPokemon]);
+
   useEffect(() => {
     getPokemonTypes();
   }, []);

@@ -11,7 +11,7 @@ const PokemonList = () => {
 
   const pokemonList = useSelector((state) => state.pokeReducer.pokelist);
   const selectedPokemon = useSelector(
-    (state) => state.pokeReducer.selectedPokemon[0]
+    (state) => state.pokeReducer.selectedPokemon
   );
 
   const pokeClick = (e, pokemonInput) => {

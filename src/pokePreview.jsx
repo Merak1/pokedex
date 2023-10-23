@@ -12,7 +12,7 @@ const PokePreview = ({ pokemon }) => {
 
   return (
     <>
-      {pokemon !== undefined ? (
+      {pokemon !== null ? (
         <img src={image} alt="" />
       ) : (
         <img src={pokedex} alt="" />

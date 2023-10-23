@@ -5,7 +5,7 @@ const initialState = {
   next20Pokemons: [],
   previous20Pokemons: [],
   current20Pokemons: [],
-  selectedPokemon: [],
+  selectedPokemon: null,
 };
 
 export const pokeSlice = createSlice({
@@ -30,7 +30,7 @@ export const pokeSlice = createSlice({
       state.current20Pokemons = action.payload;
     },
     getSelectedPokemon: (state, action) => {
-      state.selectedPokemon = [action.payload];
+      state.selectedPokemon = action.payload;
     },
   },
 });
