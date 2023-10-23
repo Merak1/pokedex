@@ -1,21 +1,47 @@
 import React, { useState, useEffect } from "react";
 import pokedex from "./assets/pokedex.jpg";
-import { getSelectedPokemon } from "./pokeSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import pokemonColors from "./helpers/pokemonColors";
+import gradient from "./helpers/gradient";
 
-const PokePreview = ({ pokemon }) => {
-  const [image, setImage] = useState(null);
-
+const PokePreview = () => {
+  const [pokemonGradientValues, setPokemonGradientValues] = useState([]);
+  const selectedPokemon = useSelector(
+    (state) => state.pokeReducer.selectedPokemon
+  );
   useEffect(() => {
-    pokemon != null ? setImage(pokemon.sprites.front_default) : null;
-  }, [pokemon, image]);
+    if (selectedPokemon) {
+      setPokemonGradientValues(getColorsFromPokemonType(pokemonColors));
+    }
+  }, [selectedPokemon]);
+  const getColorsFromPokemonType = (listOfColors) => {
+    let gradientValues = [];
+    selectedPokemon.types.forEach((element) => {
+      if (element.type.name in listOfColors) {
+        gradientValues.push(listOfColors[element.type.name]);
+      }
+    });
+    console.log("gradientValues", gradientValues);
+    return gradientValues;
+  };
 
   return (
     <>
-      {pokemon !== null ? (
-        <img src={image} alt="" />
+      {selectedPokemon !== null ? (
+        <div
+          className="preview-background "
+          style={{ background: gradient(pokemonGradientValues) }}
+        >
+          {/* <p>id: {selectedPokemon.id}</p> */}
+          <img src={selectedPokemon.sprites.front_default} alt="" />
+        </div>
       ) : (
-        <img src={pokedex} alt="" />
+        <div
+          className="preview-background-image"
+          style={{
+            backgroundImage: `url(${pokedex})`,
+          }}
+        ></div>
       )}
     </>
   );

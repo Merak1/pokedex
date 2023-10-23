@@ -36,18 +36,14 @@ function App() {
     }
   }, [offSet, limit]);
 
-  const selectedPokemon = useSelector(
-    (state) => state.pokeReducer.selectedPokemon
-  );
-
   const fetchPokemonList = (url, offSet, limit) => {
     const completedUrl = `${url}${offSet}&limit=${limit}`;
     // console.log("🍊🍊🍊🍊🍊🍊🍊🍊");
     // console.log("url ", url);
     // console.log("offSet ", offSet);
     // console.log("limit ", limit);
-    console.log("🌲🌲🌲🌲🌲");
-    console.log("completedUrl ", completedUrl);
+    // console.log("🌲🌲🌲🌲🌲");
+    // console.log("completedUrl ", completedUrl);
     // console.log("🍊🍊🍊🍊🍊🍊🍊🍊");
     axios
 
@@ -57,7 +53,7 @@ function App() {
         dispatch(addAllPokemons(res.data.results));
         dispatch(getNext20Pokemons(res.data.next));
         dispatch(getPrevious20Pokemons(res.data.previous));
-        console.log("res.data 💜", res.data);
+        // console.log("res.data 💜", res.data);
       })
       .catch((error) => console.log(error));
   };
@@ -72,28 +68,33 @@ function App() {
   return (
     <>
       <div className="container">
-        <div className="pokedata">
-          <div className="poke-preview">
-            <p>count / {count}</p>
-            <p>offset / {offSet}</p>
-            <PokePreview pokemon={selectedPokemon} />
+        <div className="pokedex">
+          <div className="pokedata">
+            <div className="poke-preview">
+              {/* <p>count / {count}</p>
+            <p>offset / {offSet}</p> */}
+              {/* <PokePreview pokemon={selectedPokemon} /> */}
+              {/* <div className="preview-image"> */}
+              <PokePreview />
+              {/* </div> */}
+            </div>
+            <PokemonDisplay />
           </div>
-          <PokemonDisplay />
-        </div>
 
-        <div className="controll">
-          <button
-            disabled={count <= 0 ? true : false}
-            onClick={getPreviousPokemonList}
-          >
-            previous
-          </button>
-          <button
-            disabled={count < 7 ? false : true}
-            onClick={getNextPokemonList}
-          >
-            next
-          </button>
+          <div className="controll">
+            <button
+              disabled={count <= 0 ? true : false}
+              onClick={getPreviousPokemonList}
+            >
+              previous
+            </button>
+            <button
+              disabled={count < 7 ? false : true}
+              onClick={getNextPokemonList}
+            >
+              next
+            </button>
+          </div>
         </div>
       </div>
     </>

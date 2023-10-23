@@ -40,6 +40,7 @@ const PokemonList = () => {
         {pokemonList !== undefined ? (
           pokemonList.map((pokemon) => (
             <div
+              key={pokemon.name}
               id={pokemon.name}
               className="pokemon-card"
               onClick={(e) => pokeClick(e, pokemon)}

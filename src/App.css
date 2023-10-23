@@ -1,51 +1,137 @@
-.container {
-  width: 100%;
+@font-face {
+  font-family: "Pokemon Solid";
+  /*Can be any text*/
+  src: local("Pokemon Solid"),
+    url("./assets/Pokemon_Solid.ttf") format("truetype");
+}
 
+@font-face {
+  font-family: "Flexo-Medium";
+  src: url("https://db.onlinewebfonts.com/t/d2d21cf0ee4c1d969d8a4dccc587ab26.eot");
+  src: url("https://db.onlinewebfonts.com/t/d2d21cf0ee4c1d969d8a4dccc587ab26.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/d2d21cf0ee4c1d969d8a4dccc587ab26.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/d2d21cf0ee4c1d969d8a4dccc587ab26.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/d2d21cf0ee4c1d969d8a4dccc587ab26.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/d2d21cf0ee4c1d969d8a4dccc587ab26.svg#Flexo-Medium")format("svg");
+}
+
+h1 {
+  /* font-family: 'Pokemon Solid'; */
+  font-stretch: expanded;
+  letter-spacing: 5px;
+}
+
+.container {
+  /* width: 100%;
+  height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Flexo-Medium";
+}
+
+.pokedex {
+  width: 80%;
+  /* height: 80%; */
+  min-height: 40%;
+  border-radius: 10px;
 }
 
 .pokedata {
   display: flex;
-
+  height: inherit;
 }
 
 .pokemon-display {
-  background-color: rgba(0, 79, 148, 0.48);
+  background-color: rgb(10, 33, 53);
+  /* background-image: url(assets/pokemonPatternWallpaper.jpg); */
   width: 60%;
-}
-
-.poke-preview {
-  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  height: inherit;
+  padding: 20px 0px;
+  border-radius: 0px 10px 10px 0px;
 }
 
 .pokemon-list {
-  /* width: 60%; */
-  display: flex;
-  flex-wrap: wrap;
-}
-
-
-.poke-preview img {
   width: 100%;
+  /* display: flex; */
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
 }
+
 
 
 .pokemon-card {
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 90%;
   background-color: antiquewhite;
-  border-radius: 10%;
+  border-radius: 10px;
   /* margin: 30px; */
-  margin: 20px;
+  margin: auto;
   display: flex;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
+.pokemon-card:hover {
+  background-color: rgb(90, 90, 90);
+  cursor: pointer;
+  color: wheat;
 }
 
 .pokemon-card p {
   width: 100%;
   margin: auto;
   text-align: center;
+  font-size: 2.3cqh;
+}
+
+.preview-background {
+  display: flex;
+  align-items: center;
 
 }
+
+.preview-background-image {
+  width: 100%;
+  height: 100%;
+  display: inline;
+}
+
+.preview-background img {
+  margin: auto;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+.preview-background-image {
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-size: cover;
+  /* height: inherit; */
+}
+
+.pokedex-image {
+  width: 100%;
+  height: auto;
+}
+
+.poke-preview {
+  height: 100%;
+  width: 40%;
+  height: inherit;
+}
+
+
+
 
 button .disabled {
   background-color: gray;
@@ -57,6 +143,13 @@ button .disabled {
 
 .pokemon-detail {
   height: 100%;
+  width: 90%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.842);
+  color: rgb(246, 24s6, 246);
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 1em;
 }
 
 .detail {
@@ -69,9 +162,60 @@ button .disabled {
   background-color: aliceblue;
   padding: 20px;
   font-size: 20px;
-
+  color: rgb(10, 59, 103);
 }
 
-.RED {
-  background-color: red;
+.return:hover {
+  background-color: rgb(10, 59, 103);
+  color: aliceblue;
+}
+
+.types {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.types p {
+  /* color: red; */
+  width: 100%;
+}
+
+.type {
+  width: 50%;
+}
+
+.type p {
+  color: black;
+}
+
+.controll {
+  /* position: fixed; */
+  bottom: 0;
+  right: 0;
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name h1 {
+  padding: 0px 20px;
+}
+
+@media only screen and (max-width: 780px) {
+  .pokedata {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .poke-preview {
+    width: 100%;
+  }
+
+  .pokemon-display {
+    width: 100%;
+  }
+
+  .preview-background-image {
+    height: 30vh;
+  }
 }
