@@ -42,7 +42,6 @@ const PokemonDetail = () => {
       <p>no currentPokemon</p>
     </>;
   } else {
-    console.log("currentPokemon", currentPokemon);
     return (
       <div className={`pokemon-detail `}>
         <div className="detail">

@@ -17,12 +17,9 @@ const PokemonList = () => {
 
   const clickHandler = (e, pokemonInput) => {
     if (e.detail === 1) {
-      console.log("1 click");
       const { name, url } = pokemonInput;
       fetchSelectedPokemon(url);
-      console.log("url ", url);
     } else if (e.detail === 2) {
-      console.log("double click");
       navigate(`/${selectedPokemon.id}`);
     }
   };

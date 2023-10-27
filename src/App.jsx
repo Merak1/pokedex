@@ -24,7 +24,6 @@ function App() {
 
   useEffect(() => {
     if (offSet === 140) {
-      console.log("not working");
       fetchPokemonList(urlCall, offSet, 11);
     } else {
       fetchPokemonList(urlCall, offSet, limit);
@@ -33,7 +32,6 @@ function App() {
 
   const fetchPokemonList = (url, offSet, limit) => {
     const completedUrl = `${url}${offSet}&limit=${limit}`;
-    console.log("completedUrl", completedUrl);
     axios
       .get(completedUrl)
       .then((res) => {
