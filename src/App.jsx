@@ -60,8 +60,6 @@ function App() {
             </div>
             <PokemonDisplay />
           </div>
-          <p>{offSet}</p>
-          <p>{count}</p>
           <div className="controll">
             <button
               className={` ${
